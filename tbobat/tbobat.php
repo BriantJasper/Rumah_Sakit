@@ -6,18 +6,18 @@
 //     exit;
 // } 
 
-require 'funcdokter.php';
+require 'funcobat.php';
 require '../appearance/header.php';
 
 // pagination
 // konfigurasi
 $jumlahDataPerHalaman = 5;
-$jumlahData = count(query("SELECT * FROM tb_dokter"));
+$jumlahData = count(query("SELECT * FROM tb_obat"));
 $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
 $halamanAktif = ( isset($_GET["page"] ) ) ? $_GET["page"] : 1;
 $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
 
-$datadokter = query("SELECT * FROM tb_dokter ORDER BY id_dokter ASC LIMIT $awalData, $jumlahDataPerHalaman");
+$dataobat = query("SELECT * FROM tb_obat ORDER BY id_obat ASC LIMIT $awalData, $jumlahDataPerHalaman");
 
 // tombol cari ditekan
 // if( isset($_POST["cari"]) ) {
@@ -43,8 +43,8 @@ $datadokter = query("SELECT * FROM tb_dokter ORDER BY id_dokter ASC LIMIT $awalD
 <body>
  
     <div class="container">
-        <center><h1>Data Dokter</h1></center>
-        <a href="insert.php">Add Data</a>
+        <center><h1>Data Obat</h1></center>
+        <a href="insert.php">Add data</a>
     </div>
 
     <!-- search -->
@@ -102,25 +102,21 @@ $datadokter = query("SELECT * FROM tb_dokter ORDER BY id_dokter ASC LIMIT $awalD
     <div class="container"> 
         <table class ="table table-hover table-striped table-bordered table-responsive"> 
         <tr>
-            <td class="text-center"> <?= "Doctor ID"; ?> </td>
-            <td class="text-center"> <?= "Doctor Name"; ?> </td>
-            <td class="text-center"> <?= "Specialist"; ?> </td>
-            <td class="text-center"> <?= "Address"; ?> </td>
-            <td class="text-center"> <?= "Phone Number"; ?> </td>
+            <td class="text-center"> <?= "Medicine ID"; ?> </td>
+            <td class="text-center"> <?= "Medicine Name"; ?> </td>
+            <td class="text-center"> <?= "Description"; ?> </td>
             <td class="text-center"> <?= "Action"; ?> </td>
 
         </tr>
         <?php $i = 1; ?>
-        <?php foreach ($datadokter as $data) : ?> 
+        <?php foreach ($dataobat as $data) : ?> 
             <tr>
-                <td class="text-center"> <?= $data["id_dokter"]; ?> </td>
-                <td class="text-center"> <?= $data["nama_dokter"]; ?> </td>
-                <td class="text-center"> <?= $data["spesialis"]; ?> </td>
-                <td class="text-center"> <?= $data["alamat"]; ?> </td>
-                <td class="text-center"> <?= $data["no_telp"]; ?> </td>
+                <td class="text-center"> <?= $data["id_obat"]; ?> </td>
+                <td class="text-center"> <?= $data["nama_obat"]; ?> </td>
+                <td class="text-center"> <?= $data["ket_obat"]; ?> </td>
                 <td class="text-center">
-                <a class= "btn btn-outline-primary" href="update.php?id=<?= $data["id_dokter"];?> ">Update</a>
-                <a class="btn btn-outline-danger" href="delete.php?id=<?= $data["id_dokter"];?>">Delete</a>
+                <a class= "btn btn-outline-primary" href="update.php?id=<?= $data["id_obat"];?> ">Update</a>
+                <a class="btn btn-outline-danger" href="delete.php?id=<?= $data["id_obat"];?>">Delete</a>
                 </td>
             </tr>
             <?php $i++?>

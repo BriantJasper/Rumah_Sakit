@@ -13,13 +13,12 @@ function query($query) {
 
 function tambah($data) {
     global $conn;
-    $id_dokter = test_input($data["id_dokter"]);
-    $nama_dokter = test_input($data["nama_dokter"]);
-    $spesialis = test_input($data["spesialis"]);
-    $alamat = test_input($data["alamat"]);
-    $no_telp = test_input($data["no_telp"]);
+    $id_pasien = test_input($data["id_pasien"]);
+    $nomor_identitas = test_input($data["nomor_identitas"]);
+    $nama_pasien = test_input($data["nama_pasien"]);
+    $jenis_kelamin = test_input($data["jenis_kelamin"]);
 
-    $query = "INSERT INTO tb_dokter VALUES ('$id_dokter','$nama_dokter','$spesialis','$alamat','$no_telp')";
+    $query = "INSERT INTO tb_pasien VALUES ('$id_pasien','$nomor_identitas','$nama_pasien','$jenis_kelamin')";
 
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
@@ -27,24 +26,22 @@ function tambah($data) {
 
 function hapus($id) {
     global $conn;
-    mysqli_query($conn, "DELETE FROM tb_dokter WHERE id_dokter = $id");
+    mysqli_query($conn, "DELETE FROM tb_pasien WHERE id_pasien = $id");
     return mysqli_affected_rows($conn);
 }
  
 function ubah($data) {
     global $conn;
-    $id = $data["id_dokter"];
-    $nama_dokter = $data["nama_dokter"];
-    $spesialis = $data["spesialis"];
-    $alamat = $data["alamat"];
-    $no_telp = $data["no_telp"];
+    $id = $data["id_pasien"];
+    $nomor_identitas = $data["nomor_identitas"];
+    $nama_pasien = $data["nama_pasien"];
+    $jenis_kelamin = $data["jenis_kelamin"];
 
-    $query = "UPDATE tb_dokter SET 
-    nama_dokter = '$nama_dokter',
-    spesialis = '$spesialis',
-    alamat = '$alamat',
-    no_telp = '$no_telp'
-    WHERE id_dokter = $id
+    $query = "UPDATE tb_pasien SET 
+    nama_dokter = '$nomor_identitas',
+    nama_pasien = '$nama_pasien',
+    jenis_kelamin = '$jenis_kelamin'
+    WHERE id_pasien = $id
     ";
 
     mysqli_query($conn, $query);
