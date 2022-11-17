@@ -1,18 +1,18 @@
 <?php 
-session_start();
+// session_start();
 
-if ( !isset($_SESSION["login"]) ) {
-    header("Location: login.php");
-    exit;
-} 
+// if ( !isset($_SESSION["login"]) ) {
+//     header("Location: login.php");
+//     exit;
+// } 
 
-require 'functions.php';
-require 'header.php';
+require 'funcdokter.php';
+require '../appearance/header.php';
 
 // pagination
 // konfigurasi
 $jumlahDataPerHalaman = 5;
-$jumlahData = count(query("SELECT * FROM tbujian"));
+$jumlahData = count(query("SELECT * FROM tb_dokter"));
 $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
 $halamanAktif = ( isset($_GET["page"] ) ) ? $_GET["page"] : 1;
 $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
@@ -101,27 +101,24 @@ $datadokter = query("SELECT * FROM tb_dokter ORDER BY id_dokter ASC LIMIT $awalD
     <div class="container"> 
         <table class ="table table-hover table-striped table-bordered table-responsive"> 
         <tr>
-            <td class="text-center"> <?= "ID Ujian"; ?> </td>
-            <td class="text-center"> <?= "Nama Mapel"; ?> </td>
-            <td class="text-center"> <?= "Jurusan"; ?> </td>
-            <td class="text-center"> <?= "Kelas"; ?> </td>
-            <td class="text-center"> <?= "Tanggal Ujian"; ?> </td>
-            <td class="text-center"> <?= "Durasi Ujian"; ?> </td>
-            <td class="text-center"> <?= "Aksi"; ?> </td>
+            <td class="text-center"> <?= "id_dokter"; ?> </td>
+            <td class="text-center"> <?= "nama_dokter"; ?> </td>
+            <td class="text-center"> <?= "spesialis"; ?> </td>
+            <td class="text-center"> <?= "alamat"; ?> </td>
+            <td class="text-center"> <?= "no_telp"; ?> </td>
 
         </tr>
         <?php $i = 1; ?>
-        <?php foreach ($dataujian as $data) : ?> 
+        <?php foreach ($datadokter as $data) : ?> 
             <tr>
-                <td class="text-center"> <?= $data["idujian"]; ?> </td>
-                <td class="text-center"> <?= $data["namamapel"]; ?> </td>
-                <td class="text-center"> <?= $data["namajurusan"]; ?> </td>
-                <td class="text-center"> <?= $data["kelas"]; ?> </td>
-                <td class="text-center"> <?= $data["tanggal_ujian"]; ?> </td>
-                <td class="text-center"> <?= $data["durasi_ujian"]; ?> </td>
+                <td class="text-center"> <?= $data["id_dokter"]; ?> </td>
+                <td class="text-center"> <?= $data["nama_dokter"]; ?> </td>
+                <td class="text-center"> <?= $data["spesialis"]; ?> </td>
+                <td class="text-center"> <?= $data["alamat"]; ?> </td>
+                <td class="text-center"> <?= $data["no_telp"]; ?> </td>
                 <td class="text-center">
-                <a class= "btn btn-outline-primary" href="ubah.php?id=<?= $data["idujian"];?> ">Ubah</a>
-                <a class="btn btn-outline-danger" href="hapus.php?id=<?= $data["idujian"];?>">Hapus</a>
+                <a class= "btn btn-outline-primary" href="update.php?id=<?= $data["id_dokter"];?> ">Update</a>
+                <a class="btn btn-outline-danger" href="delete.php?id=<?= $data["id_dokter"];?>">Delete</a>
                 </td>
             </tr>
             <?php $i++?>

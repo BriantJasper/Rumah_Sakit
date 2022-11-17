@@ -13,13 +13,13 @@ function query($query) {
 
 function tambah($data) {
     global $conn;
-    $mapel = test_input($data["namamapel"]);
-    $namajurusan = test_input($data["namajurusan"]);
-    $kelas = test_input($data["kelas"]);
-    $tgl = test_input($data["tanggal_ujian"]);
-    $durasi = test_input($data["durasi_ujian"]);
+    $id_dokter = test_input($data["id_dokter"]);
+    $nama_dokter = test_input($data["nama_dokter"]);
+    $spesialis = test_input($data["spesialis"]);
+    $alamat = test_input($data["alamat"]);
+    $no_telp = test_input($data["no_telp"]);
 
-    $query = "INSERT INTO tbujian VALUES ('', '$mapel','$namajurusan','$kelas','$tgl','$durasi')";
+    $query = "INSERT INTO tb_dokter VALUES ('$id_dokter','$nama_dokter','$spesialis','$alamat','$no_telp')";
 
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
@@ -27,26 +27,24 @@ function tambah($data) {
 
 function hapus($id) {
     global $conn;
-    mysqli_query($conn, "DELETE FROM tbujian WHERE idujian = $id");
+    mysqli_query($conn, "DELETE FROM tb_dokter WHERE id_dokter = $id");
     return mysqli_affected_rows($conn);
 }
  
 function ubah($data) {
     global $conn;
-    $id = $data["idujian"];
-    $mapel = $data["namamapel"];
-    $namajurusan = $data["namajurusan"];
-    $kelas = $data["kelas"];
-    $tgl = $data["tanggal_ujian"];
-    $durasi = $data["durasi_ujian"];
+    $id = $data["id_dokter"];
+    $nama_dokter = $data["nama_dokter"];
+    $spesialis = $data["spesialis"];
+    $alamat = $data["alamat"];
+    $no_telp = $data["no_telp"];
 
-    $query = "UPDATE tbujian SET 
-    namamapel = '$mapel',
-    namajurusan = '$namajurusan',
-    kelas = '$kelas',
-    tanggal_ujian = '$tgl',
-    durasi_ujian = '$durasi'
-    WHERE idujian = $id
+    $query = "UPDATE tb_dokter SET 
+    nama_dokter = '$nama_dokter',
+    spesialis = '$spesialis',
+    alamat = '$alamat',
+    no_telp = '$no_telp'
+    WHERE id_dokter = $id
     ";
 
     mysqli_query($conn, $query);
@@ -90,17 +88,17 @@ function ubah($data) {
     function registrasi($data) {
         global $conn;
 
-        $username = strtolower(stripslashes($data["username"]));
+        $email = strtolower(stripslashes($data["email"]));
         $password = mysqli_real_escape_string($conn, $data["password"]);
         $password2 = mysqli_real_escape_string($conn, $data["password2"]);
 
         //cek username sudah ada atau belum
-        $result = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username'");
+        $result = mysqli_query($conn, "SELECT email FROM tb_user WHERE email = '$email'");
 
         if ( mysqli_fetch_assoc($result) ) {
             echo "
                 <script>
-                    alert('Username Sudah Terdaftar!');
+                    alert('Email Sudah Terdaftar!');
                 </script>
             ";
             return false;
@@ -120,7 +118,7 @@ function ubah($data) {
         $password = password_hash($password, PASSWORD_DEFAULT);
 
         // tambahkan userbaru ke database
-        mysqli_query($conn, "INSERT INTO user VALUES('', '$username', '$password')");
+        mysqli_query($conn, "INSERT INTO user VALUES('', '$email', '$password')");
         return mysqli_affected_rows($conn);
     }
 
