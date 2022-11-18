@@ -32,6 +32,7 @@ function hapus($id) {
  
 function ubah($data) {
     global $conn;
+    $prev_id = $data["prev_id"];
     $id = $data["id_pasien"];
     $nomor_identitas = $data["nomor_identitas"];
     $nama_pasien = $data["nama_pasien"];
@@ -40,12 +41,13 @@ function ubah($data) {
     $no_telp = $data["no_telp"];
 
     $query = "UPDATE tb_pasien SET 
+    id_pasien = '$id',
     nomor_identitas = '$nomor_identitas',
     nama_pasien = '$nama_pasien',
     jenis_kelamin = '$jenis_kelamin',
     alamat = '$alamat',
     no_telp = '$no_telp'
-    WHERE id_pasien = $id
+    WHERE id_pasien = '$prev_id'
     ";
 
     mysqli_query($conn, $query);

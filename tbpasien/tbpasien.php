@@ -98,7 +98,6 @@ $datapasien = query("SELECT * FROM tb_pasien ORDER BY id_pasien ASC LIMIT $awalD
         </ul>
     </nav>
 
-
     <div class="container"> 
         <table class ="table table-hover table-striped table-bordered table-responsive"> 
         <tr>

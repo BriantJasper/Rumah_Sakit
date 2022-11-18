@@ -31,6 +31,7 @@ function hapus($id) {
 
 function ubah($data) {
     global $conn;
+    $prev_id = $data["prev_id"];
     $id = $data["id_obat"];
     $nama_obat = $data["nama_obat"];
     $ket_obat = $data["ket_obat"];
@@ -39,7 +40,7 @@ function ubah($data) {
     id_obat = '$id',
     nama_obat = '$nama_obat',
     ket_obat = '$ket_obat'
-    WHERE id_obat = $id
+    WHERE id_obat = '$prev_id'
     ";
 
     mysqli_query($conn, $query);

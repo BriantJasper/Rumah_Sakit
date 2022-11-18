@@ -11,7 +11,7 @@ require 'funcobat.php';
 require '../appearance/header.php';
 $id = $_GET["id"];
 
-$dataobat = query("SELECT * FROM tb_obat WHERE id_obat = $id")[0];
+$dataobat = query("SELECT * FROM tb_obat WHERE id_obat = '$id'")[0];
 
 
 ?>
@@ -40,17 +40,20 @@ $dataobat = query("SELECT * FROM tb_obat WHERE id_obat = $id")[0];
 </head>
 <body>
     
-    <center><h1>Update Doctor Data</h1></center>
+    <center><h1>Update Medicine Data</h1></center>
 
     <div class="container">    
         <form action="" method="post">
-        <input type="hidden" name="id_obat" value="<?= $dataobat["id_obat"]; ?>">
+        <input type="hidden" name="prev_id" value="<?= $dataobat["id_obat"]; ?>">
         
+                <label for="id_obat" class="form-label">Medicine ID : </label>
+                <input type="text" name="id_obat" class="form-control" required value = "<?= $dataobat["id_obat"] ?>">
+
                 <label for="nama_obat" class="form-label">Medicine Name : </label>
-                <input type="text" name="nama_obat" class="form-control" required value = <?= $dataobat["nama_obat"] ?>>
+                <input type="text" name="nama_obat" class="form-control" required value = "<?= $dataobat["nama_obat"] ?>">
 
                 <label for="ket_obat" class="form-label">Description : </label>
-                <input type="text" name="ket_obat" class="form-control" required value = <?= $dataobat["ket_obat"] ?>>
+                <input type="text" name="ket_obat" class="form-control" required value = "<?= $dataobat["ket_obat"] ?>">
             
                 <button style="margin-top: 10px;" class="btn btn-primary" type="submit" name="submit" required>Update Data</button>
     
