@@ -36,11 +36,15 @@ function ubah($data) {
     $nomor_identitas = $data["nomor_identitas"];
     $nama_pasien = $data["nama_pasien"];
     $jenis_kelamin = $data["jenis_kelamin"];
+    $alamat = $data["alamat"];
+    $no_telp = $data["no_telp"];
 
     $query = "UPDATE tb_pasien SET 
-    nama_dokter = '$nomor_identitas',
+    nomor_identitas = '$nomor_identitas',
     nama_pasien = '$nama_pasien',
-    jenis_kelamin = '$jenis_kelamin'
+    jenis_kelamin = '$jenis_kelamin',
+    alamat = '$alamat',
+    no_telp = '$no_telp'
     WHERE id_pasien = $id
     ";
 

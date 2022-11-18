@@ -46,11 +46,14 @@ $datapasien = query("SELECT * FROM tb_pasien WHERE id_pasien = $id")[0];
         <form action="" method="post">
         <input type="hidden" name="id_pasien" value="<?= $datapasien["id_pasien"]; ?>">
         
-                <label for="nama_pasien" class="form-label">Doctor Name : </label>
-                <input type="text" name="nama_pasien" class="form-control" required value = <?= $datapasien["nama_pasien"] ?>>
+                <label for="nomor_identitas" class="form-label">Identity Number : </label>
+                <input type="text" name="nomor_identitas" class="form-control" required value = <?= $datapasien["nomor_identitas"] ?>>
            
-                <label for="spesialis" class="form-label">Specialist : </label>
-                <input type="text" name="spesialis" class="form-control" required value = <?= $datapasien["spesialis"] ?>>
+                <label for="nama_pasien" class="form-label">Patient Name : </label>
+                <input type="text" name="nama_pasien" class="form-control" required value = <?= $datapasien["nama_pasien"] ?>>
+
+                <label for="jenis_kelamin" class="form-label">Patient Gender : </label>
+                <input type="text" name="jenis_kelamin" class="form-control" required value = <?= $datapasien["jenis_kelamin"] ?>>
             
                 <label for="alamat" class="form-label">Address : </label>
                 <input type="text" name="alamat" class="form-control" required value = <?= $datapasien["alamat"] ?>>

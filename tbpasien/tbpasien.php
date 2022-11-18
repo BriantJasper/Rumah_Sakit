@@ -106,7 +106,9 @@ $datapasien = query("SELECT * FROM tb_pasien ORDER BY id_pasien ASC LIMIT $awalD
             <td class="text-center"> <?= "Identity Number"; ?> </td>
             <td class="text-center"> <?= "Patient Name"; ?> </td>
             <td class="text-center"> <?= "Gender"; ?> </td>
+            <td class="text-center"> <?= "Address"; ?> </td>
             <td class="text-center"> <?= "Phone Number"; ?> </td>
+            <td class="text-center"> <?= "Action"; ?> </td>
 
         </tr>
         <?php $i = 1; ?>
@@ -116,6 +118,8 @@ $datapasien = query("SELECT * FROM tb_pasien ORDER BY id_pasien ASC LIMIT $awalD
                 <td class="text-center"> <?= $data["nomor_identitas"]; ?> </td>
                 <td class="text-center"> <?= $data["nama_pasien"]; ?> </td>
                 <td class="text-center"> <?= $data["jenis_kelamin"]; ?> </td>
+                <td class="text-center"> <?= $data["alamat"]; ?> </td>
+                <td class="text-center"> <?= $data["no_telp"]; ?> </td>
                 <td class="text-center">
                 <a class= "btn btn-outline-primary" href="update.php?id=<?= $data["id_pasien"];?> ">Update</a>
                 <a class="btn btn-outline-danger" href="delete.php?id=<?= $data["id_pasien"];?>">Delete</a>
