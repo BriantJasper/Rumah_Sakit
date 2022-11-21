@@ -50,9 +50,20 @@ require '../appearance/header.php';
             
                 <label for="nama_pasien" class="form-label">Patient Name : </label>
                 <input type="text" name="nama_pasien" class="form-control" placeholder="Patient Name" required>
-            
-                <label for="jenis_kelamin" class="form-label">Gender : </label>
-                <input type="text" name="jenis_kelamin" class="form-control" placeholder="Gender" required>
+            <!-- Radio Button Insert -->
+            <div class="mb-2 mt-2">
+                <label for="jenis_kelamin">Jenis Kelamin : </label>
+                <div class="br"></div>
+                    <input type="radio" name="jenis_kelamin" value="L" required>
+                    <label for="jenis_kelamin">Laki-Laki</label>
+                <div class="br"></div>
+                    <input type="radio" name="jenis_kelamin" value="P" required>
+                    <label for="jenis_kelamin">Perempuan</label>
+                <div class="br"></div>
+            </div>
+            <!-- End Of Radio Button Insert -->
+                <label for="alamat" class="form-label">Address : </label>
+                <input type="text" name="alamat" class="form-control" placeholder="Address" required>
             
                 <label for="no_telp" class="form-label">Phone Number : </label>
                 <input type="text" name="no_telp" class="form-control" placeholder="Phone Number" required>

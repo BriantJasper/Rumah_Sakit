@@ -40,7 +40,7 @@ $datapasien = query("SELECT * FROM tb_pasien WHERE id_pasien = '$id'")[0];
 </head>
 <body>
     
-    <center><h1>Update Doctor Data</h1></center>
+    <center><h1>Update Patient Data</h1></center>
 
 
     <div class="container">    
@@ -56,8 +56,20 @@ $datapasien = query("SELECT * FROM tb_pasien WHERE id_pasien = '$id'")[0];
                 <label for="nama_pasien" class="form-label">Patient Name : </label>
                 <input type="text" name="nama_pasien" class="form-control" required value = "<?= $datapasien["nama_pasien"] ?>">
 
-                <label for="jenis_kelamin" class="form-label">Patient Gender : </label>
-                <input type="text" name="jenis_kelamin" class="form-control" required value = "<?= $datapasien["jenis_kelamin"] ?>">
+            <!-- Radio Button Update -->
+            <div class="mb-2 mt-2">
+                <label for="jenis_kelamin">Jenis Kelamin : </label>
+                <div class="br"></div>
+                    <input type="radio" name="jenis_kelamin" value="L" required>
+                    <label for="jenis_kelamin">Laki-Laki</label>
+                <div class="br"></div>
+                    <input type="radio" name="jenis_kelamin" value="P" required>
+                    <label for="jenis_kelamin">Perempuan</label>
+                <div class="br"></div>
+                    <label for="jenis_kelamin" style="color: grey;">Currently : <?= $datapasien["jenis_kelamin"] ?></label>
+                <div class="br"></div>
+            </div>
+            <!-- End Of Radio Button Update -->
             
                 <label for="alamat" class="form-label">Address : </label>
                 <input type="text" name="alamat" class="form-control" required value ="<?= $datapasien["alamat"] ?>">

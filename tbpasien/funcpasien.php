@@ -17,8 +17,10 @@ function tambah($data) {
     $nomor_identitas = test_input($data["nomor_identitas"]);
     $nama_pasien = test_input($data["nama_pasien"]);
     $jenis_kelamin = test_input($data["jenis_kelamin"]);
+    $alamat = test_input($data["alamat"]);
+    $no_telp = test_input($data["no_telp"]);
 
-    $query = "INSERT INTO tb_pasien VALUES ('$id_pasien','$nomor_identitas','$nama_pasien','$jenis_kelamin')";
+    $query = "INSERT INTO tb_pasien VALUES ('$id_pasien','$nomor_identitas','$nama_pasien','$jenis_kelamin','$alamat','$no_telp')";
 
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
@@ -26,7 +28,7 @@ function tambah($data) {
 
 function hapus($id) {
     global $conn;
-    mysqli_query($conn, "DELETE FROM tb_pasien WHERE id_pasien = $id");
+    mysqli_query($conn, "DELETE FROM tb_pasien WHERE id_pasien = '$id'");
     return mysqli_affected_rows($conn);
 }
  
