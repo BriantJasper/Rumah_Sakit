@@ -9,15 +9,29 @@ function query($query) {
         $rows[] = $row;
     }
     return $rows;
+
+
+
+
 }
 
 function tambah($data) {
     global $conn;
     $id_rm = test_input($data["id_rm"]);
+    $nama_pasien = test_input($data["nama_pasien"]);
+    $keluhan = test_input($data["keluhan"]);
+    $nama_dokter = test_input($data["nama_dokter"]);
+    $diagnosa = test_input($data["diagnosa"]);
     $nama_poli = test_input($data["nama_poli"]);
-    $gedung = test_input($data["gedung"]);
+    $tgl_periksa = test_input($data["tgl_periksa"]);
 
-    $query = "INSERT INTO tb_poliklinik VALUES ('$id_rm','$nama_poli','$gedung')";
+
+    $id_pasien = query("SELECT id_pasien FROM tb_pasien WHERE nama_pasien ='$nama_pasien'")[0]['id_pasien'];
+    $id_dokter = query("SELECT id_dokter FROM tb_dokter WHERE nama_dokter ='$nama_dokter'")[0]['id_dokter'];
+    $id_poli = query("SELECT id_poli FROM tb_poliklinik WHERE nama_poli ='$nama_poli'")[0]['id_poli'];
+
+    $query = "INSERT INTO tb_rekammedis VALUES ('$id_rm','$id_pasien','$keluhan','$id_dokter','$diagnosa','$id_poli','$tgl_periksa')";
+
 
     mysqli_query($conn, $query);
     return mysqli_affected_rows($conn);
@@ -25,22 +39,34 @@ function tambah($data) {
 
 function hapus($id) {
     global $conn;
-    mysqli_query($conn, "DELETE FROM tb_poliklinik WHERE id_poli = '$id'");
+    mysqli_query($conn, "DELETE FROM tb_rekammedis WHERE id_rm = '$id'");
     return mysqli_affected_rows($conn);
 }
  
 function ubah($data) {
     global $conn;
     $prev_id = $data["prev_id"];
-    $id = $data["id_poli"];
+    $id_rm = $data["id_rm"];
+    $nama_pasien = $data["nama_pasien"];
+    $keluhan = $data["keluhan"];
+    $nama_dokter = $data["nama_dokter"];
+    $diagnosa = $data["diagnosa"];
     $nama_poli = $data["nama_poli"];
-    $gedung = $data["gedung"];
+    $tgl_periksa = $data["tgl_periksa"];
 
-    $query = "UPDATE tb_poliklinik SET 
-    id_poli = '$id',
-    nama_poli = '$nama_poli',
-    gedung = '$gedung'
-    WHERE id_poli = '$prev_id'
+    $id_pasien = query("SELECT id_pasien FROM tb_pasien WHERE nama_pasien ='$nama_pasien'")[0]['id_pasien'];
+    $id_dokter = query("SELECT id_dokter FROM tb_dokter WHERE nama_dokter ='$nama_dokter'")[0]['id_dokter'];
+    $id_poli = query("SELECT id_poli FROM tb_poliklinik WHERE nama_poli ='$nama_poli'")[0]['id_poli'];
+
+    $query = "UPDATE tb_rekammedis SET 
+    id_rm = '$id_rm',
+    id_pasien = '$id_pasien',
+    keluhan = '$keluhan',
+    id_dokter = '$id_dokter',
+    diagnosa = '$diagnosa',
+    id_poli = '$id_poli',
+    tgl_periksa = '$tgl_periksa'
+    WHERE id_rm = '$prev_id'
     ";
 
     mysqli_query($conn, $query);

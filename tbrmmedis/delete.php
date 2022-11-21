@@ -8,7 +8,7 @@
 // } 
 
 
-require 'funcpoliklinik.php';
+require 'funcrmmedis.php';
 
 $id = $_GET["id"];
 
@@ -16,13 +16,13 @@ if( hapus ($id) > 0 ) {
     echo "
         <script>
                 alert('Data Successfully Deleted!');
-                document.location.href = 'tbpoliklinik.php';
+                document.location.href = 'tbrmmedis.php';
         </script>";
 } else {
     echo "
         <script>
                 alert('Failed To Delete Data!');
-                document.location.href = 'tbpoliklinik.php';
+                document.location.href = 'tbrmmedis.php';
         </script>"; }
 
 ?> 
