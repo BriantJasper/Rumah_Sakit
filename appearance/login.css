@@ -15,7 +15,7 @@ body {
 .main {
 	position: relative;
 	width: 480px;
-	height: 430px;
+	height: 480px;
 	background: rgb(223, 218, 241);
 	opacity: 80%;
 	border-radius: 8px;
@@ -31,7 +31,7 @@ body {
 	top: -50%;
 	left: -50%;
 	width: 480px;
-	height: 430px;
+	height: 480px;
 	background: linear-gradient(0deg, transparent, rgb(0, 14, 164));
 	transform-origin: bottom right;
 	animation: animate 10s linear infinite;
@@ -43,7 +43,7 @@ body {
 	top: -50%;
 	left: -50%;
 	width: 480px;
-	height: 430px;
+	height: 480px;
 	background: linear-gradient(0deg, transparent, rgb(0, 14, 164));
 	transform-origin: bottom right;
 	animation: animate 10s linear infinite;

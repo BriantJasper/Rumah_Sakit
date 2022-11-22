@@ -33,17 +33,17 @@
 					<div class="textbox">
 						<label>Password : </label>
 						<input
-							type="text"
+							type="password"
 							required="required"
 							placeholder=""
 						/>
 					<div class="subject">
-							<input type="hidden" name="subject" value="Verify"><br>
+							<input type="hidden" name="subject" value="Welcone"><br>
 					</div>
 						<div class="message">
 						<input
 							type="hidden"
-							value="Confirm you login"
+							value="You've Login To Our Website"
 							name="message"
 						/>
 					</div>

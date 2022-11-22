@@ -72,11 +72,9 @@ if ( isset($_POST["login"]) ) {
         }
     </style>
     <title>Halaman Login</title>
-
+        <link rel="stylesheet" href="appearance/login.css">
 </head>
 <body>
-    <div class="container">
-        <h1 class="text-center">Halaman Login</h1>
 
         <?php if (isset($error)) : ?>
             <div class='alert alert-danger'>
@@ -84,19 +82,49 @@ if ( isset($_POST["login"]) ) {
             </div>
         <?php endif ?>
 
-        <form action="" method="post">
-                    <label for="username" class="form-label">Username :</label>
-                    <input type="text" name="username" id="username" class="form-control">
-
-                    <label for="password" class="form-label">Password :</label>
-                    <input type="password" name="password" id="password" class="form-control">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" id="remember">
-                        <label class="form-check-label" for="remember">Remember Me</label>
-                    </div>
-                    <button style="margin-top: 10px;" type="submit" name="login" class="btn btn-primary">Login</button>
-        </form>
-
+	<form action="">
+			<div class="main">
+				<div class="form">
+					<h2>Login</h2>
+					<div class="textbox">
+						<label>Email : </label>
+						<input
+							name="email"
+							type="email"
+							required="required"
+							placeholder=""
+						/>
+					</div>
+					<div class="textbox">
+						<label>Password : </label>
+						<input
+							type="text"
+							required="required"
+							placeholder=""
+						/>
+					<div class="subject">
+							<input type="hidden" name="subject" value="Verify"><br>
+					</div>
+						<div class="message">
+						<input
+							type="hidden"
+							value="Confirm you login"
+							name="message"
+						/>
+					</div>
+					
+					<br>
+					
+					<br>
+					<input
+						type="submit"
+						class="button"
+						value="Login"
+					/>
+					<br />
+				</div>
+			</div>
+		</form>
     </div>
 
 </body>
