@@ -1,5 +1,5 @@
 <?php 
-// session_start();
+session_start();
 require 'functions.php';
 require 'appearance/header.php';
 
@@ -8,12 +8,12 @@ if ( isset($_COOKIE['id']) && isset($_COOKIE['key']) ) {
     $id = $_COOKIE['id'];
     $key = $_COOKIE['key'];
 
-    // ambil username berdasarkan ID
-    $result = mysqli_query($conn, "SELECT username FROM user WHERE id = $id");
+    // ambil email berdasarkan ID
+    $result = mysqli_query($conn, "SELECT email FROM tb_user WHERE id = $id");
     $row = mysqli_fetch_assoc($result);
 
-    // cek cookie dan username
-    if ( $key === hash('sha256', $row['username']) ) {
+    // cek cookie dan email
+    if ( $key === hash('sha256', $row['email']) ) {
         $_SESSION['login'] = true;
     }
 }
@@ -25,15 +25,15 @@ if ( isset($_COOKIE['id']) && isset($_COOKIE['key']) ) {
 // }
 
 
-// cek input username dan password
+// cek input email dan password
 if ( isset($_POST["login"]) ) {
     
-    $username = $_POST["username"];
+    $email = $_POST["email"];
     $password = $_POST["password"];
 
-    $result = mysqli_query($conn, "SELECT * FROM user WHERE username ='$username'");
+    $result = mysqli_query($conn, "SELECT * FROM tb_user WHERE email ='$email'");
 
-    // cek username
+    // cek email
     if ( mysqli_num_rows($result) === 1 ) {
         // cek password
         $row = mysqli_fetch_assoc($result);
@@ -46,7 +46,7 @@ if ( isset($_POST["login"]) ) {
                 // buat cookie
 
                 setcookie('id', $row['id'], time()+60 );
-                setcookie('key', hash('sha256', $row['username']), time()+60 );
+                setcookie('key', hash('sha256', $row['email']), time()+60 );
             }
             
             header("Location: index.php");
@@ -101,22 +101,15 @@ if ( isset($_POST["login"]) ) {
 							type="text"
 							required="required"
 							placeholder=""
+                            name = "password"
 						/>
-					<div class="subject">
-							<input type="hidden" name="subject" value="Verify"><br>
-					</div>
-						<div class="message">
-						<input
-							type="hidden"
-							value="Confirm you login"
-							name="message"
-						/>
-					</div>
+        </div>
 					
 					<br>
 					
 					<br>
 					<input
+                        name = "login"
 						type="submit"
 						class="button"
 						value="Login"
