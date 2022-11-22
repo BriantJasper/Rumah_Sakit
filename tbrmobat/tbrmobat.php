@@ -6,34 +6,40 @@
 //     exit;
 // } 
 
-require 'funcrmmedis.php';
+require 'funcrmobat.php';
 require '../appearance/header.php';
 
 // pagination
 // konfigurasi
 $jumlahDataPerHalaman = 5;
-$jumlahData = count(query("SELECT * FROM tb_rekammedis"));
+$jumlahData = count(query("SELECT * FROM tb_rm_obat"));
 $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
 $halamanAktif = ( isset($_GET["page"] ) ) ? $_GET["page"] : 1;
 $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
 
-$datarekammedis = query("SELECT id_rm, nama_pasien, jenis_kelamin, keluhan, nama_dokter, spesialis, diagnosa, nama_poli, gedung, tgl_periksa
-    FROM tb_rekammedis
+$data_rm_obat = query("SELECT tb_rm_obat.id, nama_pasien, jenis_kelamin, keluhan, nama_dokter, spesialis, diagnosa, tgl_periksa, nama_obat, ket_obat
+FROM `tb_rm_obat` 
+    INNER JOIN tb_rekammedis
+    ON tb_rm_obat.id_rm = tb_rekammedis.id_rm
     INNER JOIN tb_pasien
     ON tb_rekammedis.id_pasien = tb_pasien.id_pasien
     INNER JOIN tb_dokter
     ON tb_rekammedis.id_dokter = tb_dokter.id_dokter
-    INNER JOIN tb_poliklinik
-    ON tb_rekammedis.id_poli = tb_poliklinik.id_poli
-    ORDER BY id_rm ASC LIMIT $awalData, $jumlahDataPerHalaman");
+	INNER JOIn tb_obat
+    ON tb_rm_obat.id_obat = tb_obat.id_obat
 
-// tombol cari ditekan
-if( isset($_POST["cari"]) ) {
-    $datarekammedis = cari($_POST);
-    // var_dump($_POST);
-}
+    ORDER BY id ASC LIMIT $awalData, $jumlahDataPerHalaman");
 
-$datapoli = query("SELECT nama_poli FROM tb_poliklinik");
+$data_obat = query("SELECT nama_obat from tb_obat");
+$data_rm = query("SELECT id_rm from tb_rekammedis");
+
+    // tombol cari ditekan
+    if( isset($_POST["cari"]) ) {
+        $data_rm_obat = cari($_POST);
+
+    }
+
+
 
 ?>
 <head>
@@ -52,7 +58,7 @@ $datapoli = query("SELECT nama_poli FROM tb_poliklinik");
 <body>
  
     <div class="container">
-        <center><h1>Data RM Medis</h1></center>
+        <center><h1>Medicine Medical Record Data</h1></center>
         <a href="insert.php">Add Data</a>
     </div>
 
@@ -65,10 +71,10 @@ $datapoli = query("SELECT nama_poli FROM tb_poliklinik");
             
                 <div class="br"></div>
                 <!-- radio button -->
-                    <input type="hidden" name="nama_poli" value="">
-                    <?php foreach ($datapoli as $d) : ?>
-                        <input type="radio" name="nama_poli" value="<?= $d["nama_poli"] ?>">
-                        <label for="nama_poli"><?= $d["nama_poli"] ?></label>
+                    <input type="hidden" name="nama_obat" value="">
+                    <?php foreach ($data_obat as $d) : ?>
+                        <input type="radio" name="nama_obat" value="<?= $d["nama_obat"] ?>">
+                        <label for="nama_obat"><?= $d["nama_obat"] ?></label>
                     <?php endforeach; ?>
                 <!-- end of radio button -->
                 <div class="br"></div>
@@ -77,7 +83,7 @@ $datapoli = query("SELECT nama_poli FROM tb_poliklinik");
                 <label style="margin-bottom:10px ;" for="id_rm">ID RM : </label>
                 <select name="id_rm">
                     <option value="">-</option>
-                    <?php foreach ($datarekammedis as $data) : ?>
+                    <?php foreach ($data_rm as $data) : ?>
                         <option value="<?= $data["id_rm"] ?>"> <?= $data["id_rm"] ?> </option>
                     <?php endforeach; ?>
                 </select>
@@ -85,6 +91,8 @@ $datapoli = query("SELECT nama_poli FROM tb_poliklinik");
             </div>
         </form>
     <!-- end of search -->
+
+    <!-- Pagination -->
     <nav>
         <ul class="pagination">
             <?php if( $halamanAktif > 1 ) : ?>
@@ -104,39 +112,40 @@ $datapoli = query("SELECT nama_poli FROM tb_poliklinik");
         <?php endif; ?>
         </ul>
     </nav>
+    <!-- End Of Pagination -->
 
     <div class="container"> 
         <table class ="table table-hover table-striped table-bordered table-responsive"> 
         <tr>
-            <td class="text-center"> <?= "Medical Record ID"; ?> </td>
+            <td class="text-center"> <?= "ID"; ?> </td>
             <td class="text-center"> <?= "Patient Name"; ?> </td>
             <td class="text-center"> <?= "Gender"; ?> </td>
             <td class="text-center"> <?= "Complaint"; ?> </td>
             <td class="text-center"> <?= "Doctor Name"; ?> </td>
             <td class="text-center"> <?= "Specialist"; ?> </td>
             <td class="text-center"> <?= "Diagnose"; ?> </td>
-            <td class="text-center"> <?= "Policlinic Name"; ?> </td>
-            <td class="text-center"> <?= "Building"; ?> </td>
+            <td class="text-center"> <?= "Medicine Name"; ?> </td>
+            <td class="text-center"> <?= "Medicine Description"; ?> </td>
             <td class="text-center"> <?= "Check Date"; ?> </td>
             <td class="text-center"> <?= "Action"; ?> </td>
 
         </tr>
         <?php $i = 1; ?>
-        <?php foreach ($datarekammedis as $data) : ?> 
+        <?php foreach ($data_rm_obat as $data) : ?> 
             <tr>
-                <td class="text-center"> <?= $data["id_rm"]; ?> </td>
+                <td class="text-center"> <?= $data["id"]; ?> </td>
                 <td class="text-center"> <?= $data["nama_pasien"]; ?> </td>
                 <td class="text-center"> <?= $data["jenis_kelamin"]; ?> </td>
                 <td class="text-center"> <?= $data["keluhan"]; ?> </td>
                 <td class="text-center"> <?= $data["nama_dokter"]; ?> </td>
                 <td class="text-center"> <?= $data["spesialis"]; ?> </td>
                 <td class="text-center"> <?= $data["diagnosa"]; ?> </td>
-                <td class="text-center"> <?= $data["nama_poli"]; ?> </td>
-                <td class="text-center"> <?= $data["gedung"]; ?> </td>
+                <td class="text-center"> <?= $data["nama_obat"]; ?> </td>
+                <td class="text-center"> <?= $data["ket_obat"]; ?> </td>
                 <td class="text-center"> <?= $data["tgl_periksa"]; ?> </td>
                 <td class="text-center">
-                <a class= "btn btn-outline-primary" href="update.php?id=<?= $data["id_rm"];?> ">Update</a>
-                <a class="btn btn-outline-danger" href="delete.php?id=<?= $data["id_rm"];?>">Delete</a>
+                <a class= "btn btn-outline-primary" href="update.php?id=<?= $data["id"];?> ">Update</a>
+                <a class="btn btn-outline-danger" href="delete.php?id=<?= $data["id"];?>">Delete</a>
                 </td>
             </tr>
             <?php $i++?>

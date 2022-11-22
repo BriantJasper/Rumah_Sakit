@@ -84,24 +84,47 @@ function ubah($data) {
 
     function cari($data) {
         $keyword = $data["keyword"];
-        $namamapel = $data["namamapel"];
-        $namajurusan = $data["namajurusan"];
+        $nama_poli = $data["nama_poli"];
+        $id_rm = $data["id_rm"];
 
-        if ( $namamapel == NULL && $namajurusan == NULL) {
-        $query = "SELECT * FROM tbujian
-                    WHERE
-                    namamapel LIKE '%$keyword%' OR
-                    namajurusan LIKE '%$keyword%' OR
-                    kelas LIKE '%$keyword%' OR
-                    tanggal_ujian LIKE '%$keyword%' OR
-                    durasi_ujian LIKE '%$keyword%'
-                ";
+        if ( $nama_poli == NULL && $id_rm == NULL) {
+
+        $query = "SELECT id_rm, nama_pasien, jenis_kelamin, keluhan, nama_dokter, spesialis, diagnosa, nama_poli, gedung, tgl_periksa
+        FROM tb_rekammedis
+            INNER JOIN tb_pasien
+            ON tb_rekammedis.id_pasien = tb_pasien.id_pasien
+            INNER JOIN tb_dokter
+            ON tb_rekammedis.id_dokter = tb_dokter.id_dokter
+            INNER JOIN tb_poliklinik
+            ON tb_rekammedis.id_poli = tb_poliklinik.id_poli
+                WHERE
+                tb_rekammedis.id_rm LIKE '%$keyword%' OR
+                tb_pasien.nama_pasien LIKE '%$keyword%' OR
+                tb_pasien.jenis_kelamin LIKE '%$keyword%' OR
+                tb_rekammedis.keluhan LIKE '%$keyword%' OR
+                tb_dokter.nama_dokter LIKE '%$keyword%' OR
+                spesialis LIKE '%$keyword%' OR
+                tb_rekammedis.diagnosa LIKE '%$keyword%' OR
+                nama_poli LIKE '%$keyword%' OR
+                tb_poliklinik.gedung LIKE '%$keyword%' OR
+                tb_rekammedis.tgl_periksa LIKE '%$keyword%'
+                ORDER BY id_rm ASC
+            ";
         } else {
-        $query = "SELECT * FROM tbujian
-                    WHERE
-                    namajurusan = '$namajurusan' OR
-                    namamapel = '$namamapel'
-                ";
+
+        $query = "SELECT id_rm, nama_pasien, jenis_kelamin, keluhan, nama_dokter, spesialis, diagnosa, nama_poli, gedung, tgl_periksa
+        FROM tb_rekammedis
+            INNER JOIN tb_pasien
+            ON tb_rekammedis.id_pasien = tb_pasien.id_pasien
+            INNER JOIN tb_dokter
+            ON tb_rekammedis.id_dokter = tb_dokter.id_dokter
+            INNER JOIN tb_poliklinik
+            ON tb_rekammedis.id_poli = tb_poliklinik.id_poli
+            WHERE
+            tb_poliklinik.nama_poli = '$nama_poli' OR
+            id_rm = '$id_rm'
+            ORDER BY id_rm ASC
+        ";
         }
 
         return query($query);

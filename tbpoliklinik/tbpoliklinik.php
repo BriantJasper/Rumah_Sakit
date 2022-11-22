@@ -11,13 +11,13 @@ require '../appearance/header.php';
 
 // pagination
 // konfigurasi
-$jumlahDataPerHalaman = 5;
-$jumlahData = count(query("SELECT * FROM tb_poliklinik"));
-$jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
-$halamanAktif = ( isset($_GET["page"] ) ) ? $_GET["page"] : 1;
-$awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
+// $jumlahDataPerHalaman = 5;
+// $jumlahData = count(query("SELECT * FROM tb_poliklinik"));
+// $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
+// $halamanAktif = ( isset($_GET["page"] ) ) ? $_GET["page"] : 1;
+// $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
 
-$datapoliklinik = query("SELECT * FROM tb_poliklinik ORDER BY id_poli ASC LIMIT $awalData, $jumlahDataPerHalaman");
+$datapoliklinik = query("SELECT * FROM tb_poliklinik ORDER BY id_poli ASC");
 
 // tombol cari ditekan
 // if( isset($_POST["cari"]) ) {
@@ -77,27 +77,27 @@ $datapoliklinik = query("SELECT * FROM tb_poliklinik ORDER BY id_poli ASC LIMIT 
             </div>
         </form>
         
-    <!-- navigasi -->
-    <nav>
+    <!-- Pagination -->
+    <!-- <nav>
         <ul class="pagination">
-            <?php if( $halamanAktif > 1 ) : ?>
-                <li class="page-item"><a class="page-link" href="?page=<?= $halamanAktif - 1; ?>">&laquo;</a></li>
-            <?php endif; ?>
+            </?php if( $halamanAktif > 1 ) : ?>
+                <li class="page-item"><a class="page-link" href="?page=</?= $halamanAktif - 1; ?>">&laquo;</a></li>
+            </?php endif; ?>
             
-            <?php for($i = 1; $i <= $jumlahHalaman; $i++) : ?>
-                <?php if( $i == $halamanAktif) : ?>
-                    <li class="page-item "><a class="page-link" href="?page=<?= $i; ?>" style="font-weight:bold "><?= $i; ?></a></li>
-                <?php else : ?>
-                    <li class="page-item"><a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a></li>
-                <?php endif; ?>
-            <?php endfor; ?>
+            </?php for($i = 1; $i <= $jumlahHalaman; $i++) : ?>
+                </?php if( $i == $halamanAktif) : ?>
+                    <li class="page-item "><a class="page-link" href="?page=</?= $i; ?>" style="font-weight:bold "></?= $i; ?></a></li>
+                </?php else : ?>
+                    <li class="page-item"><a class="page-link" href="?page=</?= $i; ?>"></?= $i; ?></a></li>
+                </?php endif; ?>
+            </?php endfor; ?>
       
-        <?php if( $halamanAktif < $jumlahHalaman ) : ?>
-            <li class="page-item"><a class="page-link" href="?page=<?= $halamanAktif + 1; ?>">&raquo;</a></li>
-        <?php endif; ?>
+        </?php if( $halamanAktif < $jumlahHalaman ) : ?>
+            <li class="page-item"><a class="page-link" href="?page=</?= $halamanAktif + 1; ?>">&raquo;</a></li>
+        </?php endif; ?>
         </ul>
-    </nav>
-
+    </nav> -->
+    <!-- End Of Pagination -->
     <div class="container"> 
         <table class ="table table-hover table-striped table-bordered table-responsive"> 
         <tr>

@@ -40,7 +40,7 @@ $tbpoliklinik = query('SELECT nama_poli FROM tb_poliklinik');
 </head>
 
 <body>
-    <center><h1>Insert Patient Data</h1></center>
+    <center><h1>Insert Medical Record Data</h1></center>
 
     <div class="container">
         <form action="" method="post">
