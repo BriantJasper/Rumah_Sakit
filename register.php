@@ -1,13 +1,13 @@
 <?php 
 require 'functions.php';
-require 'header.php';
+require '/xampp/smkimmanuel/htdocs/git/Rumah_Sakit/appearance/header.php';
 
 if (isset($_POST["register"])) {
     if (registrasi($_POST) > 0) {
         echo "  
             <script>
-                alert('Registrasi Berhasil!');
-                document.location.href = 'index.php';
+                alert('Register Successfull!');
+                document.location.href = 'login.php';
             </script>
         ";
     } else {
@@ -20,35 +20,95 @@ if (isset($_POST["register"])) {
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Halaman Registrasi</title>
-    <style>
-        label {
-            display: block;
-        }
-    </style>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Register Page</title>
+		<link
+			rel="stylesheet"
+			href="appearance/register.css"
+		/>
+	</head>
+	<body>
 
-<body>
+    <form action="mail.php" method="POST">
+			<div class="main">
+				<div class="form">
+					<h2>Register</h2>
+					<div class="textbox">
+						<label for="email">Email : </label>
+						<input
+							name="email"
+							type="text"
+							required="required"
+							placeholder=""
+						/>
+					</div>
+                    <div class="textbox">
+						<label for="username">Username : </label>
+						<input
+							name="username"
+							type="text"
+							required="required"
+							placeholder=""
+						/>
+					</div>
+                    
+					<div class="textbox mt-3">
+						<label for="password">Password : </label>
+						<input
+                            name="password"
+							type="password"
+							required="required"
+							placeholder=""
+						/>
+                    </div>
 
-<div class="container">
-    <center><h1>Halaman Registrasi</h1></center>
+					<div class="textbox mt-3">
+						<label for="password2">Verify Password : </label>
+						<input
+                            name="password2"
+							type="password"
+							required="required"
+							placeholder=""
+						/>
+                    </div>
+                    <div class="policy mt-2 mb-2">
+						<input
+							type="checkbox"
+							name="policy"
+							id=""
+                            required
+						/>
+						<i>
+							By checking this box, you agree to be bound by our
+							<a
+								href="terms.html"
+								target="_blank">
+                                Terms and Conditions agreement.</a>
+						</i>
+					</div>
 
-    <form action="" method="post">
+					<input
+                        name = "register"
+						type="submit"
+						class="button mt-auto"
+						value="Login"
+					/>
 
-                <label for="email" class="form-label">Username :</label>
-                <input type="text" name="email" id="email" class="form-control" placeholder="Username" required>
-
-                <label for="password" class="form-label">Password :</label>
-                <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
-
-                <label for="password2" class="form-label">Konfirmasi Password :</label>
-                <input type="password" name="password2" id="password2" class="form-control" placeholder="Konfirmasi Password" required>
-
-                <button type="submit" name="register" style = "margin-top: 10px;" class="btn btn-primary">Register</button>
-
-    </form>
-</div>
-
+                    
+					<br/>
+				</div>
+			</div>
+		</form>
+    </div>
 
 </body>
 </html>

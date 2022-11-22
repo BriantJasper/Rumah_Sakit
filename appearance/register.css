@@ -15,8 +15,8 @@ body {
 .main {
 	position: relative;
 	width: 480px;
-	height: 480px;
-	background: rgb(223, 218, 241);
+	height: 620px;
+	background: white;
 	opacity: 80%;
 	border-radius: 8px;
 	overflow: hidden;
@@ -31,8 +31,8 @@ body {
 	top: -50%;
 	left: -50%;
 	width: 480px;
-	height: 480px;
-	background: linear-gradient(0deg, transparent, rgb(0, 14, 164));
+	height: 550px;
+	background: linear-gradient(0deg, transparent, black);
 	transform-origin: bottom right;
 	animation: animate 10s linear infinite;
 	-webkit-animation: animate 10s linear infinite;
@@ -43,8 +43,8 @@ body {
 	top: -50%;
 	left: -50%;
 	width: 480px;
-	height: 480px;
-	background: linear-gradient(0deg, transparent, rgb(0, 14, 164));
+	height: 550px;
+	background: linear-gradient(0deg, transparent, black);
 	transform-origin: bottom right;
 	animation: animate 10s linear infinite;
 	-webkit-animation: animate 10s linear infinite;
@@ -74,7 +74,7 @@ body {
 	border-radius: 8px;
 	background: white;
 	z-index: 10;
-	padding: 30px 40px;
+	padding: 30px 45px;
 	display: flex;
 	flex-direction: column;
 	-webkit-border-radius: 8px;
@@ -94,7 +94,7 @@ body {
 	font-weight: 600;
 	position: relative;
 	width: 300px;
-	margin-top: 0px;
+	margin-top: 15px;
 }
 .textbox input {
 	position: relative;
@@ -124,24 +124,41 @@ body {
 	-webkit-border-radius: 20px;
 	-moz-border-radius: 20px;
 	-ms-border-radius: 20px;
-	-o-border-radius: 20px;
-	justify-content: flex-end;
 }
 label {
 	display: flex;
 	margin-bottom: 10px;
 }
 
-.terms {
-	text-decoration: none;
+.or {
+	text-align: center;
+	font-weight: bold;
 }
 
-a {
-	color: black;
+.google {
+	gap: 15px;
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	background-color: rgb(59, 187, 230);
+	border-radius: 20px;
+	font-weight: bold;
+	color: white;
+	padding: 10px 15px;
+	text-align: center;
 	text-decoration: none;
+	font-size: 16px;
+	cursor: pointer;
+
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	-ms-border-radius: 20px;
+	-o-border-radius: 20px;
 }
 
-a:hover {
-	color: rgb(81, 153, 236);
-	text-decoration: underline;
-  }
+.policy :link {
+	text-decoration: none;
+}
+.policy :visited {
+	font-weight: bold;
+}

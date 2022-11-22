@@ -1,15 +1,15 @@
 <?php 
 
-// session_start();
+session_start();
 
-// if ( !isset($_SESSION["login"]) ) {
-//     header("Location: login.php");
-//     exit;
+if ( !isset($_SESSION["login"]) ) {
+    header("Location: login.php");
+    exit;
 
-// // require 'functions.php';
-// // require 'header.php';
-// }
-// ?>
+// require 'functions.php';
+// require 'header.php';
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -78,8 +78,8 @@
                 <li><a href="/tbobat/tbobat.php" class="link-light"><span class="mx-2">Table Obat</span></a></li>
                 <li><a href="/tbpasien/tbpasien.php" class="link-light"><span class="mx-2">Table Pasien</span></a></li>
                 <li><a href="/tbpoliklinik/tbpoliklinik.php" class="link-light"><span class="mx-2">Table Poliklinik</span></a></li>
-                <li><a href="#" class="link-light"><span class="mx-2">Table Rekam Medis</span></a></li>
-                <li><a href="#" class="link-light"><span class="mx-2">Table RM Obat</span></a></li>
+                <li><a href="/tbrmmedis/tbrmmedis.php" class="link-light"><span class="mx-2">Table Rekam Medis</span></a></li>
+                <li><a href="/tbrmobat/tbrmobat.php" class="link-light"><span class="mx-2">Table RM Obat</span></a></li>
               </div>
             </ul>
           </div>

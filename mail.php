@@ -1,17 +1,25 @@
 <?php 
-$receiver = "briantjasper5@gmail.com";
-$subject = "Email Test via PHP using Localhost";
-$body = "Hi, there... This is a test email sent from Localhost.";
+
+$receiver = $_POST["email"];
+$subject = "Verify Your Account";
 $sender = "briant.002@ski.sch.id";
 
-if (mail($receiver, $subject, $body, $sender)) {
-    echo "Email sent succesfully to $receiver";
+$body = "You've Registered To Rumah Sakit YCCA, Click Here to Verify http://localhost/git/Rumah_Sakit/login.php";
+    
+    if (mail($receiver, $subject, $body, $sender)) {
+        echo "
+        <script>
+                alert('Mail Successfully Sent to $receiver');
+                document.location.href = 'login.php';
+        </script>";
+
 } else {
-    echo "Sorry, failed while sending mail!";
+    echo "
+        <script>
+                alert('Failed to send email to $receiver!');
+                document.location.href = 'login.php';
+        </script>";
 }
-
-
-
 
 
 

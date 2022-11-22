@@ -18,17 +18,18 @@ function query($query) {
 function registrasi($data) {
     global $conn;
 
+    $email = $data["email"];
     $username = strtolower(stripslashes($data["username"]));
     $password = mysqli_real_escape_string($conn, $data["password"]);
     $password2 = mysqli_real_escape_string($conn, $data["password2"]);
 
     //cek username sudah ada atau belum
-    $result = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username'");
+    $result = mysqli_query($conn, "SELECT username FROM tb_user WHERE username = '$username'");
 
     if ( mysqli_fetch_assoc($result) ) {
         echo "
             <script>
-                alert('Username Sudah Terdaftar!');
+                alert('Username Is Already Registered!');
             </script>
         ";
         return false;
@@ -38,7 +39,7 @@ function registrasi($data) {
     if ($password !== $password2) {
         echo"
         <script>
-            alert('Password tidak sesuai dengan Password Konfirmasi!');
+            alert('The Password Confirmation Does Not Match');
         </script>
         ";
         return false;
@@ -48,11 +49,9 @@ function registrasi($data) {
     $password = password_hash($password, PASSWORD_DEFAULT);
 
     // tambahkan userbaru ke database
-    mysqli_query($conn, "INSERT INTO user VALUES('', '$username', '$password')");
+    mysqli_query($conn, "INSERT INTO tb_user VALUES('', '$email', '$username', '$password')");
     return mysqli_affected_rows($conn);
 }
-
-
 
 
 
