@@ -57,13 +57,12 @@ $data_rm = query("SELECT id_rm from tb_rekammedis");
 </head>
 <body>
  
-    <div class="container">
-        <center><h1>Medicine Medical Record Data</h1></center>
-        <a href="insert.php">Add Data</a>
-    </div>
+<div class="container mt-5">
+        <h1 class="mx-auto text-center">Medicine Medical Record Data</h1>
+
+    
 
     <!-- search -->
-    <div class="container">
         <form action="" method="post" class="form-check">
             <div class="form-group">
                 <input type="text" name="keyword" autofocus placeholder="Search" autocomplete="off">
@@ -80,15 +79,16 @@ $data_rm = query("SELECT id_rm from tb_rekammedis");
                 <div class="br"></div>
 
                 <!-- option search -->
-                <label style="margin-bottom:10px ;" for="id_rm">ID RM : </label>
-                <select name="id_rm">
-                    <option value="">-</option>
+            <div class="form-group" style="width: 150px;">
+                <select name="id_rm" class="form-select mb-2 mt-2">
+                    <option value="">ID RM Obat</option>
                     <?php foreach ($data_rm as $data) : ?>
                         <option value="<?= $data["id_rm"] ?>"> <?= $data["id_rm"] ?> </option>
                     <?php endforeach; ?>
                 </select>
-                <!-- end of option search -->
             </div>
+                <!-- end of option search -->
+            
         </form>
     <!-- end of search -->
 
@@ -113,8 +113,8 @@ $data_rm = query("SELECT id_rm from tb_rekammedis");
         </ul>
     </nav>
     <!-- End Of Pagination -->
-
-    <div class="container"> 
+    <a href="insert.php" class="btn btn-primary mb-2">Add Data</a>
+    
         <table class ="table table-hover table-striped table-bordered table-responsive"> 
         <tr>
             <td class="text-center"> <?= "ID"; ?> </td>
@@ -152,11 +152,8 @@ $data_rm = query("SELECT id_rm from tb_rekammedis");
         <?php endforeach; ?>
             
         </table>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+</div>
+</div>
+    <?php require '../appearance/footer.php' ?>
 </body>
 </html>
