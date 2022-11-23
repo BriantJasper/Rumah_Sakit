@@ -16,7 +16,7 @@ if ( !isset($_SESSION["login"]) ) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bootstrap 5 Side Bar Navigation</title>
+    <title>Rumah Sakit YCCA</title>
     <!-- fontawesome icons -->
     <script src="https://kit.fontawesome.com/b5572efd23.js" crossorigin="anonymous"></script>
     <!-- bootstrap 5 css -->
@@ -46,7 +46,7 @@ if ( !isset($_SESSION["login"]) ) {
       class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column" id="sidebar" width ="50%">
       <ul class="nav flex-column text-white w-100">
         <a href="#" class="nav-link h3 text-white my-2">
-          Responsive </br>SideBar Nav
+          RS YCCA
         </a>
         <!-- Home -->
         <li href="#" class="nav-link">
@@ -63,6 +63,25 @@ if ( !isset($_SESSION["login"]) ) {
           <i class="bx bx-conversation"></i>
           <span class="mx-2">Contact</span>
         </li>
+        <ul class="list-unstyled ps-0">
+        <li href="#" class="mb-1">
+          <button class="nav-link btn btn-toggle collapsed text-white" data-bs-toggle="collapse" data-bs-target="#table-collapse" aria-expanded="false">
+            <i class="fa-solid fa-table-cells-large"></i>
+            <span class="mx-2">Contact</span> 
+          </button>
+
+          <div class="collapse" id="table-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal ml-auto" style="margin-top: 5px;">
+              <div class="ml-auto">
+                <li><a href="/tbdokter/tbdokter.php" class="link-light"><span class="mx-2">08193412948219</span></a></li>
+                <li><a href="/tbdokter/tbdokter.php" class="link-light"><span class="mx-2">08193412948219</span></a></li>
+                <li><a href="/tbdokter/tbdokter.php" class="link-light"><span class="mx-2">08193412948219</span></a></li>
+              </div>
+            </ul>
+          </div>
+        </li>
+      </ul>
+        </ul>
         <!-- Table Collapsible -->
         <ul class="list-unstyled ps-0">
         <li href="#" class="mb-1">

@@ -100,7 +100,7 @@ if (isset($_POST["register"])) {
                         name = "register"
 						type="submit"
 						class="button mt-auto"
-						value="Login"
+						value="Register"
 					/>
 
                     
