@@ -1,9 +1,10 @@
 <?php 
 require 'functions.php';
-require '/xampp/smkimmanuel/htdocs/git/Rumah_Sakit/appearance/header.php';
+require './appearance/bootstrap.php';
 
 if (isset($_POST["register"])) {
     if (registrasi($_POST) > 0) {
+		sendmail();
         echo "  
             <script>
                 alert('Register Successfull!');
@@ -38,7 +39,7 @@ if (isset($_POST["register"])) {
 	</head>
 	<body>
 
-    <form action="mail.php" method="POST">
+    <form action="" method="POST">
 			<div class="main">
 				<div class="form">
 					<h2>Register</h2>

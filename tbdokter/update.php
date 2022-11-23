@@ -26,6 +26,7 @@ $datadokter = query("SELECT * FROM tb_dokter WHERE id_dokter = '$id'")[0];
                     <div class='alert alert-success'>
                         <strong>Success!</strong> Data Successfully Updated!
                     </div>
+                    <script>document.location.href = 'tbdokter.php'</script>
                     ";
                 } else {
                     echo "
@@ -65,6 +66,6 @@ $datadokter = query("SELECT * FROM tb_dokter WHERE id_dokter = '$id'")[0];
     
         </form>
     </div>
-
+<?php require '../appearance/footer.php'; ?>
 </body>
 </html>

@@ -22,6 +22,7 @@ require '../appearance/header.php';
                 <div class='alert alert-success'>
                     <strong>Success!</strong> Data Successfully Added!
                 </div>
+                <script>document.location.href = 'tbdokter.php'</script>
                 ";
             } else {
                 echo "
@@ -60,6 +61,6 @@ require '../appearance/header.php';
             <button style="margin-top: 10px;" class="btn btn-primary" type="submit" name="submit">Add Data</button>
         </form>
     </div>
-
+<?php require '../appearance/footer.php'; ?>
 </body>
 </html>

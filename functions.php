@@ -49,10 +49,32 @@ function registrasi($data) {
     $password = password_hash($password, PASSWORD_DEFAULT);
 
     // tambahkan userbaru ke database
-    mysqli_query($conn, "INSERT INTO tb_user VALUES('', '$email', '$username', '$password')");
+    mysqli_query($conn, "INSERT INTO tb_user VALUES('', '$username', '$email', '$password')");
     return mysqli_affected_rows($conn);
 }
 
+function sendmail() {
+    $receiver = $_POST["email"];
+    $subject = "Verify Your Account";
+    $sender = "briant.002@ski.sch.id";
 
+$body = "You've Registered To Rumah Sakit YCCA, Click Here to Verify http://localhost/git/Rumah_Sakit/login.php";
+    
+    if (mail($receiver, $subject, $body, $sender)) {
+        echo "
+        <script>
+                alert('Mail Successfully Sent to $receiver');
+                document.location.href = 'login.php';
+        </script>";
+
+} else {
+    echo "
+        <script>
+                alert('Failed to send email to $receiver!');
+                document.location.href = 'login.php';
+        </script>";
+}
+
+}
 
 ?>

@@ -38,7 +38,9 @@ $nama_poli = query("SELECT nama_poli FROM tb_poliklinik WHERE id_poli ='$id_poli
                     echo "
                     <div class='alert alert-success'>
                         <strong>Success!</strong> Data Successfully Updated!
+                        
                     </div>
+                    <script>document.location.href = 'tbrmmedis.php'</script>
                     ";
                 } else {
                     echo "
@@ -118,6 +120,6 @@ $nama_poli = query("SELECT nama_poli FROM tb_poliklinik WHERE id_poli ='$id_poli
     
         </form>
     </div>
-
+        <?php require '../appearance/footer.php'; ?>
 </body>
 </html>

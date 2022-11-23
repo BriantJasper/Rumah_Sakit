@@ -24,8 +24,9 @@ $tbobat = query('SELECT nama_obat FROM tb_obat');
             if (tambah($_POST) > 0) {
                 echo "
                 <div class='alert alert-success'>
-                    <strong>Success!</strong> Data Successfully Added!
+                    <strong>Success!</strong> Data Successfully Added!       
                 </div>
+                <script>document.location.href = 'tbrmobat.php'</script>
                 ";
             } else {
                 echo "
@@ -79,6 +80,6 @@ $tbobat = query('SELECT nama_obat FROM tb_obat');
             <button style="margin-top: 10px;" class="btn btn-primary" type="submit" name="submit">Add Data</button>
         </form>
     </div>
-
+    <?php require '../appearance/footer.php'; ?>
 </body>
 </html>

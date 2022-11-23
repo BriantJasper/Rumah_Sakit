@@ -9,23 +9,18 @@ if ( !isset($_SESSION["login"]) ) {
 ?>
 <head>
   <?php require './appearance/hpheader.php' ?>
-  <style>
-    .bg-size{
-      background-size: cover;
-      background-color: aqua;
-    }
-  </style>
+  <link rel="stylesheet" href="homepage.css">
 </head>
 
 <body>
   
-<div class="container bg-size" >
+
+    <div class="column-1 mx-auto">
+      <img src="./PLSBISA.png" alt="img" class="gb" >
+    </div>
 
 
-</div>
-  
 </body>
-  
 <?php 
 require './appearance/footer.php' 
 

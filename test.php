@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -6,13 +5,13 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
 
-      <link rel="stylesheet" href="homepage.css">
+      <link rel="stylesheet" href="./homepage.css">
 </head>
 <body>    
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
     <a class="navbar-brand ms-3" href="./homepage.php">
-    <img src="./appearance/yccanav.png" width="120px" height="65px" class="me-3 display-1 mt-5"><b>Rumah Sakit YCCA</b></a>
+    <img src="https://smkimmanuel.sch.id/img/logo.b83e4900.png" width="40px" height="45px" class="me-3">Rumah Sakit YCCA</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
@@ -36,6 +35,7 @@
     <li class="nav-item ms-4"> 
       <a class="nav-link btn btn-danger" href="./logout.php">Logout</a> 
     </li>
+    </div>
   </ul>
     </div>
 </nav>

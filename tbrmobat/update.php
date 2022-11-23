@@ -40,6 +40,7 @@ $nama_obat = query("SELECT nama_obat FROM tb_obat WHERE id_obat ='$id_obat'")[0]
                     <div class='alert alert-success'>
                         <strong>Success!</strong> Data Successfully Updated!
                     </div>
+                    <script>document.location.href = 'tbrmobat.php'</script>
                     ";
                 } else {
                     echo "
@@ -55,8 +56,8 @@ $nama_obat = query("SELECT nama_obat FROM tb_obat WHERE id_obat ='$id_obat'")[0]
 <body>\
 
 
-    <div class="container"> 
-    <center><h1>Update Medical Record Data</h1></center>
+    <div class="container mt-5"> 
+    <h1 class="mx-auto text-center">Update Medical Record Data</h1>
 
        
         <form action="" method="post">
@@ -93,6 +94,6 @@ $nama_obat = query("SELECT nama_obat FROM tb_obat WHERE id_obat ='$id_obat'")[0]
     
         </form>
     </div>
-
+        <?php require '../appearance/footer.php'; ?>
 </body>
 </html>
