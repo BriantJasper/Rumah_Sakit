@@ -54,12 +54,12 @@ $datapoli = query("SELECT nama_poli FROM tb_poliklinik");
 </style>
 </head>
 <body>
-    <div class="container mt-5"> 
+<div class="container mt-5"> 
     <h1 class="mx-auto text-center">Data RM Medis</h1>
 
     <!-- search -->
-        <form action="" method="post" class="form-check">
-            <div class="form-group">
+        <form action="" method="post">
+
                 <input type="text" name="keyword" autofocus placeholder="Search..." autocomplete="off">
                 <button style= "margin-bottom: 7px;" type="submit" name="cari" class="btn btn-info">Search!</button>
             
@@ -144,7 +144,7 @@ $datapoli = query("SELECT nama_poli FROM tb_poliklinik");
         <?php endforeach; ?>
             
         </table>
-    </div>
+</div>
 
     <?php require '../appearance/footer.php' ?>
 

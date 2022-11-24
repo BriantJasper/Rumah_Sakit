@@ -63,8 +63,7 @@ $data_rm = query("SELECT id_rm from tb_rekammedis");
     
 
     <!-- search -->
-        <form action="" method="post" class="form-check">
-            <div class="form-group">
+        <form action="" method="post">
                 <input type="text" name="keyword" autofocus placeholder="Search" autocomplete="off">
                 <button style= "margin-bottom: 7px;" type="submit" name="cari" class="btn btn-info">Search!</button>
             

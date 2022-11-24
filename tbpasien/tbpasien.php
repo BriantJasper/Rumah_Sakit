@@ -20,10 +20,10 @@ $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
 $datapasien = query("SELECT * FROM tb_pasien ORDER BY id_pasien ASC LIMIT $awalData, $jumlahDataPerHalaman");
 
 // tombol cari ditekan
-// if( isset($_POST["cari"]) ) {
-//     $dataujian = cari($_POST);
-//     // var_dump($_POST);
-// }
+if( isset($_POST["cari"]) ) {
+    $datapasien = cari($_POST);
+    // var_dump($_POST);
+}
 
 
 ?>
@@ -45,60 +45,42 @@ $datapasien = query("SELECT * FROM tb_pasien ORDER BY id_pasien ASC LIMIT $awalD
     <div class="container mt-5">
         <h1 class="mx-auto text-center">Data Pasien</h1>
         <a href="insert.php" class="btn btn-primary mb-2">Add Data</a>
-    </div>
+
 
     <!-- search -->
-    <!-- <div class="container">
-        <form action="" method="post" class="form-check">
+
+        <form action="" method="post">
             <div class="form-group">
                 <input type="text" name="keyword" autofocus placeholder="Search" autocomplete="off">
                 <button style= "margin-bottom: 7px;" type="submit" name="cari" class="btn btn-info">Cari!</button>
-            
-                <div class="br"></div> -->
-                
-                <!-- radio button -->
-                    <!-- <input type="hidden" name="namajurusan" value="">
-                    </?php // foreach ($jurusan as $j) : ?/>
-                        <input type="radio" name="namajurusan" value="</?= // $j["namajurusan"] ?>">
-                        <label for="namajurusan"></?= // $j["namajurusan"] ?></label>
-                    </?php // endforeach; /?> -->
-                <!-- end of radio button -->
-                <!-- <div class="br"></div> -->
 
-                <!-- option search -->
-                <!-- <label style="margin-bottom:10px ;" for="namamapel">Nama Mapel</label>
-                <select name="namamapel">
-                    <option value="">-</option> -->
-                    <?php //foreach ($mapel as $m) : ?>
-                        <!-- <option value="</?= $m["namamapel"] ?>"> </?= $m["namamapel"] ?> </option> -->
-                    <?php //endforeach; ?>
-                </select>
-                <!-- end of option search -->
+                <div class="br"></div>
+        </form>
             </div>
         </form>
         
-    <!-- navigasi -->
-    <!-- <nav>
+    <!-- Pagination -->
+    <nav>
         <ul class="pagination">
-            </?php if( $halamanAktif > 1 ) : ?>
-                <li class="page-item"><a class="page-link" href="?page=</?= $halamanAktif - 1; ?>">&laquo;</a></li>
-            </?php endif; ?>
+            <?php if( $halamanAktif > 1 ) : ?>
+                <li class="page-item"><a class="page-link" href="?page=<?= $halamanAktif - 1; ?>">&laquo;</a></li>
+            <?php endif; ?>
             
-            </?php for($i = 1; $i <= $jumlahHalaman; $i++) : ?>
-                </?php if( $i == $halamanAktif) : ?>
-                    <li class="page-item "><a class="page-link" href="?page=</?= $i; ?>" style="font-weight:bold "></?= $i; ?></a></li>
-                </?php else : ?>
-                    <li class="page-item"><a class="page-link" href="?page=</?= $i; ?>"></?= $i; ?></a></li>
-                </?php endif; ?>
-            </?php endfor; ?>
+            <?php for($i = 1; $i <= $jumlahHalaman; $i++) : ?>
+                <?php if( $i == $halamanAktif) : ?>
+                    <li class="page-item "><a class="page-link" href="?page=<?= $i; ?>" style="font-weight:bold "><?= $i; ?></a></li>
+                <?php else : ?>
+                    <li class="page-item"><a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a></li>
+                <?php endif; ?>
+            <?php endfor; ?>
       
-        </?php if( $halamanAktif < $jumlahHalaman ) : ?>
-            <li class="page-item"><a class="page-link" href="?page=</?= $halamanAktif + 1; ?>">&raquo;</a></li>
-        </?php endif; ?>
+        <?php if( $halamanAktif < $jumlahHalaman ) : ?>
+            <li class="page-item"><a class="page-link" href="?page=<?= $halamanAktif + 1; ?>">&raquo;</a></li>
+        <?php endif; ?>
         </ul>
-    </nav> -->
+    </nav>
+    <!-- End Of Pagination -->
 
-    <div class="container"> 
         <table class ="table table-hover table-striped table-bordered table-responsive"> 
         <tr>
             <td class="text-center"> <?= "Patient ID"; ?> </td>
@@ -131,6 +113,6 @@ $datapasien = query("SELECT * FROM tb_pasien ORDER BY id_pasien ASC LIMIT $awalD
     </div>
 
     <?php require '../appearance/footer.php' ?>
-
+</div>
 </body>
 </html>

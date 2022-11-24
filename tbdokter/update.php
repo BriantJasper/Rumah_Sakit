@@ -47,7 +47,7 @@ $datadokter = query("SELECT * FROM tb_dokter WHERE id_dokter = '$id'")[0];
         <form action="" method="post">
         <input type="hidden" name="prev_id" value="<?= $datadokter["id_dokter"]; ?>">
         
-                <label for="id_dokter" class="form-label">Doctor Name : </label>
+                <label for="id_dokter" class="form-label">Doctor ID  : </label>
                 <input type="text" name="id_dokter" class="form-control" required value = "<?= $datadokter["id_dokter"] ?>">
            
                 <label for="nama_dokter" class="form-label">Doctor Name : </label>

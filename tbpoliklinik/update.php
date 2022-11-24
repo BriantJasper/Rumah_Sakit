@@ -26,7 +26,7 @@ $datapoli = query("SELECT * FROM tb_poliklinik WHERE id_poli = '$id'")[0];
                     <div class='alert alert-success'>
                         <strong>Success!</strong> Data Successfully Updated!
                     </div>
-                    <script>document.location.href = 'tbrmmedis.php'</script>
+                    <script>document.location.href = 'tbpoliklinik.php'</script>
                     ";
                 } else {
                     echo "

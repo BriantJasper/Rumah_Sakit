@@ -11,19 +11,14 @@ require '../appearance/header.php';
 
 // pagination
 // konfigurasi
-// $jumlahDataPerHalaman = 5;
-// $jumlahData = count(query("SELECT * FROM tb_poliklinik"));
-// $jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
-// $halamanAktif = ( isset($_GET["page"] ) ) ? $_GET["page"] : 1;
-// $awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
+$jumlahDataPerHalaman = 5;
+$jumlahData = count(query("SELECT * FROM tb_poliklinik"));
+$jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
+$halamanAktif = ( isset($_GET["page"] ) ) ? $_GET["page"] : 1;
+$awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
 
-$datapoliklinik = query("SELECT * FROM tb_poliklinik ORDER BY id_poli ASC");
+$datapoliklinik = query("SELECT * FROM tb_poliklinik ORDER BY id_poli ASC LIMIT $awalData, $jumlahDataPerHalaman");
 
-// tombol cari ditekan
-// if( isset($_POST["cari"]) ) {
-//     $dataujian = cari($_POST);
-//     // var_dump($_POST);
-// }
 
             
 // tombol cari ditekan
@@ -62,49 +57,33 @@ $datapoli = query("SELECT nama_poli FROM tb_poliklinik");
                 <button style= "margin-bottom: 7px;" type="submit" name="cari" class="btn btn-info">Cari!</button>
             </div>
                 <div class="br"></div>
-                
-                <!-- radio button -->
-                    <!-- <input type="hidden" name="namajurusan" value="">
-                    </?php // foreach ($jurusan as $j) : ?/>
-                        <input type="radio" name="namajurusan" value="</?= // $j["namajurusan"] ?>">
-                        <label for="namajurusan"></?= // $j["namajurusan"] ?></label>
-                    </?php // endforeach; /?> -->
-                <!-- end of radio button -->
-                <!-- <div class="br"></div> -->
-
-                <!-- option search -->
-                <!-- <label style="margin-bottom:10px ;" for="namamapel">Nama Mapel</label>
-                <select name="namamapel">
-                    <option value="">-</option> -->
-                    <?php //foreach ($mapel as $m) : ?>
-                        <!-- <option value="</?= $m["namamapel"] ?>"> </?= $m["namamapel"] ?> </option> -->
-                    <?php //endforeach; ?>
                 </select>
-                <!-- end of option search -->
-            </div>
+            
         </form>
         
     <!-- Pagination -->
-    <!-- <nav>
+    <nav>
         <ul class="pagination">
-            </?php if( $halamanAktif > 1 ) : ?>
-                <li class="page-item"><a class="page-link" href="?page=</?= $halamanAktif - 1; ?>">&laquo;</a></li>
-            </?php endif; ?>
+            <?php if( $halamanAktif > 1 ) : ?>
+                <li class="page-item"><a class="page-link" href="?page=<?= $halamanAktif - 1; ?>">&laquo;</a></li>
+            <?php endif; ?>
             
-            </?php for($i = 1; $i <= $jumlahHalaman; $i++) : ?>
-                </?php if( $i == $halamanAktif) : ?>
-                    <li class="page-item "><a class="page-link" href="?page=</?= $i; ?>" style="font-weight:bold "></?= $i; ?></a></li>
-                </?php else : ?>
-                    <li class="page-item"><a class="page-link" href="?page=</?= $i; ?>"></?= $i; ?></a></li>
-                </?php endif; ?>
-            </?php endfor; ?>
+            <?php for($i = 1; $i <= $jumlahHalaman; $i++) : ?>
+                <?php if( $i == $halamanAktif) : ?>
+                    <li class="page-item "><a class="page-link" href="?page=<?= $i; ?>" style="font-weight:bold "><?= $i; ?></a></li>
+                <?php else : ?>
+                    <li class="page-item"><a class="page-link" href="?page=<?= $i; ?>"><?= $i; ?></a></li>
+                <?php endif; ?>
+            <?php endfor; ?>
       
-        </?php if( $halamanAktif < $jumlahHalaman ) : ?>
-            <li class="page-item"><a class="page-link" href="?page=</?= $halamanAktif + 1; ?>">&raquo;</a></li>
-        </?php endif; ?>
+        <?php if( $halamanAktif < $jumlahHalaman ) : ?>
+            <li class="page-item"><a class="page-link" href="?page=<?= $halamanAktif + 1; ?>">&raquo;</a></li>
+        <?php endif; ?>
         </ul>
-    </nav> -->
+    </nav>
+</div>
     <!-- End Of Pagination -->
+
     <div class="container"> 
         <table class ="table table-hover table-striped table-bordered table-responsive"> 
         <tr>

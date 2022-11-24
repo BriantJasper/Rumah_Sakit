@@ -64,25 +64,15 @@ function ubah($data) {
 
     function cari($data) {
         $keyword = $data["keyword"];
-        $namamapel = $data["namamapel"];
-        $namajurusan = $data["namajurusan"];
 
-        if ( $namamapel == NULL && $namajurusan == NULL) {
-        $query = "SELECT * FROM tbujian
+        $query = "SELECT * FROM tb_dokter
                     WHERE
-                    namamapel LIKE '%$keyword%' OR
-                    namajurusan LIKE '%$keyword%' OR
-                    kelas LIKE '%$keyword%' OR
-                    tanggal_ujian LIKE '%$keyword%' OR
-                    durasi_ujian LIKE '%$keyword%'
+                    id_dokter LIKE '%$keyword%' OR
+                    nama_dokter LIKE '%$keyword%' OR
+                    spesialis LIKE '%$keyword%' OR
+                    alamat LIKE '%$keyword%' OR
+                    no_telp LIKE '%$keyword%'
                 ";
-        } else {
-        $query = "SELECT * FROM tbujian
-                    WHERE
-                    namajurusan = '$namajurusan' OR
-                    namamapel = '$namamapel'
-                ";
-        }
 
         return query($query);
     }
