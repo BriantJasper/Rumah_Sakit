@@ -16,7 +16,7 @@ if ( !isset($_SESSION["login"]) ) {
   
 
     <div class="column-1 mx-auto">
-      <img src="./PLSBISA.png" alt="img" class="gb" >
+      <img src="./PLSBISA.png" alt="img" class="my-auto"style="background-size: cover; width: 100%; height: 84.5%;" >
     </div>
 
 

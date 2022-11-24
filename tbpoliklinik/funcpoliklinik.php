@@ -56,28 +56,19 @@ function ubah($data) {
         return $data;
     }
 
+
     function cari($data) {
         $keyword = $data["keyword"];
-        $namamapel = $data["namamapel"];
-        $namajurusan = $data["namajurusan"];
-
-        if ( $namamapel == NULL && $namajurusan == NULL) {
-        $query = "SELECT * FROM tbujian
-                    WHERE
-                    namamapel LIKE '%$keyword%' OR
-                    namajurusan LIKE '%$keyword%' OR
-                    kelas LIKE '%$keyword%' OR
-                    tanggal_ujian LIKE '%$keyword%' OR
-                    durasi_ujian LIKE '%$keyword%'
-                ";
-        } else {
-        $query = "SELECT * FROM tbujian
-                    WHERE
-                    namajurusan = '$namajurusan' OR
-                    namamapel = '$namamapel'
-                ";
-        }
-
+        
+        $query = "SELECT id_poli, nama_poli, gedung
+        FROM tb_poliklinik
+                WHERE
+                tb_poliklinik.id_poli LIKE '%$keyword%' OR
+                tb_poliklinik.nama_poli LIKE '%$keyword%' OR
+                tb_poliklinik.gedung LIKE '%$keyword%'
+                ORDER BY id_poli ASC
+            ";
         return query($query);
     }
+    
 ?>

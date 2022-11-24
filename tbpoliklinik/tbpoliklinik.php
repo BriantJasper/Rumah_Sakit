@@ -25,6 +25,14 @@ $datapoliklinik = query("SELECT * FROM tb_poliklinik ORDER BY id_poli ASC");
 //     // var_dump($_POST);
 // }
 
+            
+// tombol cari ditekan
+if( isset($_POST["cari"]) ) {
+    $datapoliklinik = cari($_POST);
+    // var_dump($_POST);
+}
+
+$datapoli = query("SELECT nama_poli FROM tb_poliklinik");
 
 ?>
 <head>
@@ -45,16 +53,15 @@ $datapoliklinik = query("SELECT * FROM tb_poliklinik ORDER BY id_poli ASC");
     <div class="container mt-5">
         <h1 class="mx-auto text-center">Data Poliklinik</h1>
         <a href="insert.php" class="btn btn-primary mb-2">Add Data</a>
-    </div>
-
+    
     <!-- search -->
-    <!-- <div class="container">
-        <form action="" method="post" class="form-check">
+
+        <form action="" method="post">
             <div class="form-group">
                 <input type="text" name="keyword" autofocus placeholder="Search" autocomplete="off">
                 <button style= "margin-bottom: 7px;" type="submit" name="cari" class="btn btn-info">Cari!</button>
-            
-                <div class="br"></div> -->
+            </div>
+                <div class="br"></div>
                 
                 <!-- radio button -->
                     <!-- <input type="hidden" name="namajurusan" value="">

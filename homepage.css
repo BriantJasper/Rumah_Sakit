@@ -3,8 +3,8 @@
 }
 
 .gb {
-	margin-top: 0px;
-	margin-right: -60px;
+	margin-top: 20px;
+	margin-right: -50px;
 	padding: 0;
-	background-size: cover;
+	background-size: contain;
 }

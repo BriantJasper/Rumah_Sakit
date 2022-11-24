@@ -12,7 +12,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
     <a class="navbar-brand ms-3" href="./homepage.php">
-    <img src="./appearance/yccanav.png" width="120px" height="65px" class="me-3 display-1 mt-5"><b>Rumah Sakit YCCA</b></a>
+    <img src="./appearance/yccanav.png" width="120px" height="65px" class="me-3 display-1"><b>Rumah Sakit YCCA</b></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
